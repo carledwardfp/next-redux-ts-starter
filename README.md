@@ -1,34 +1,71 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# NextJs-Typescript-ReduxToolkit-RTKQuery Starter
+
+A NextJs Starter with Redux (Redux Toolkit and RTK Query) written in Typescript.
+
+### Features
+
+- ⚡️ Next 12, React 18
+- ✔️ Typescript
+- 🧠 Redux Toolkit (with next-redux-wrapper)
+- 🌐 RTK Query
+
+### Coding Style
+
+- ★ ESLint
+- 💅 Prettier
 
 ## Getting Started
 
-First, run the development server:
+### Installing
 
-```bash
-npm run dev
+```sh
+yarn create next-app [project-name] -e https://github.com/official-carledwardfp/next-redux-ts-starter
 # or
-yarn dev
+npx create-next-app [project-name] -e https://github.com/official-carledwardfp/next-redux-ts-starter
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Executing program
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+- Run `yarn serve:mock` or `npx run serve:mock` to run the mock database
+- Run `yarn dev` or `npm run dev` to start developing
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+## Help
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+The current version adds extraReducers to every reducer file. If you know a way to make it global in `store.ts`, please add a Pull Request.
 
-## Learn More
+```tsx
+// hydrateAction.ts
+import { createAction } from '@reduxjs/toolkit';
+import { HYDRATE } from 'next-redux-wrapper';
 
-To learn more about Next.js, take a look at the following resources:
+const hydrateAction = createAction<any>(HYDRATE);
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+export default hydrateAction;
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+// reducer
+{
+  ...
+  extraReducers: (builder) => {
+    builder.addCase(hydrateAction, (_state, action) => {
+      return action.payload.counter;
+    });
+  },
+}
+```
 
-## Deploy on Vercel
+## Contributions
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Everyone is welcome to contribute to this project. Feel free to open an issue if you have question or found a bug.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Contributors:
+
+- Author - Carl Edward [@carledwardfp](https://github.com/official-carledwardfp)
+
+## Version History
+
+- 0.1
+  - Initial Release
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details

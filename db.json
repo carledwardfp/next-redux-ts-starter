@@ -1,5 +1,3 @@
 {
-  "counter": {
-    "value": 0
-  }
+  "todos": []
 }

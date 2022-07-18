@@ -5,8 +5,8 @@
   align-items: stretch;
 }
 
-.store {
-  min-height: 100vh;
+.counters {
+  height: 50%;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -15,13 +15,9 @@
   gap: 32px;
 }
 
-.storeObject {
-  height: 100vh;
-  overflow: auto;
-  width: 100%;
+.counter {
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: #ccc;
+  gap: 16px;
 }

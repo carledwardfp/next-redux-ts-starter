@@ -1,7 +1,7 @@
 import { FormEvent, useState } from 'react';
-import { useAppDispatch, useAppSelector } from '@/redux/hooks';
-import { decrementCounter, incrementCounter, setCounter } from '@/redux/actions';
-import styles from '@/styles/Home.module.css';
+import { useAppDispatch, useAppSelector } from '@/common/hooks/useRedux';
+import { decrementCounter, incrementCounter, setCounter } from './counterSlice';
+import styles from './counter.module.css';
 
 function Counter() {
   const dispatch = useAppDispatch();
@@ -22,8 +22,8 @@ function Counter() {
   };
 
   return (
-    <>
-      <h2>Counter (Client)</h2>
+    <div className={styles.counters}>
+      <h2>Counter (with createSlice)</h2>
       <div className={styles.counter}>
         <button type="button" onClick={handleDecrement}>
           -
@@ -33,11 +33,11 @@ function Counter() {
           +
         </button>
       </div>
-      <form onSubmit={handleSubmit} className={styles.counter}>
+      <form onSubmit={handleSubmit}>
         <input value={value} type="number" onChange={(e) => setValue(e.target.value)} />
-        <button type="submit">{value ? 'Submit' : 'Reset'}</button>
+        <button type="submit">{value ? 'Set' : 'Reset'}</button>
       </form>
-    </>
+    </div>
   );
 }
 

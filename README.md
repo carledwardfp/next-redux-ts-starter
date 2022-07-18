@@ -31,27 +31,7 @@ npx create-next-app [project-name] -e https://github.com/official-carledwardfp/n
 
 ## Help
 
-The current version adds extraReducers to every reducer file. If you know a way to make it global in `store.ts`, please add a Pull Request.
-
-```tsx
-// hydrateAction.ts
-import { createAction } from '@reduxjs/toolkit';
-import { HYDRATE } from 'next-redux-wrapper';
-
-const hydrateAction = createAction<any>(HYDRATE);
-
-export default hydrateAction;
-
-// reducer
-{
-  ...
-  extraReducers: (builder) => {
-    builder.addCase(hydrateAction, (_state, action) => {
-      return action.payload.counter;
-    });
-  },
-}
-```
+N/A
 
 ## Contributions
 
@@ -61,8 +41,14 @@ Contributors:
 
 - Author - Carl Edward [@carledwardfp](https://github.com/official-carledwardfp)
 
+Special Thanks:
+
+- [phryneas](https://www.reddit.com/user/phryneas/) - [Reddit comment](https://www.reddit.com/r/reduxjs/comments/w1eaae/comment/igk9t14/?utm_source=share&utm_medium=web2x&context=3) inspired [#1](https://github.com/official-carledwardfp/next-redux-ts-starter/issues/1)
+
 ## Version History
 
+- 0.1.1
+  - chore: follow redux best practices
 - 0.1
   - Initial Release
 

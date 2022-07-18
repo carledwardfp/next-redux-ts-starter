@@ -1,12 +1,11 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import { createWrapper } from 'next-redux-wrapper';
-import { baseApi } from './apis';
-import { counterApiSlice, counterSlice } from './reducers';
+import counterReducer from '@/features/counter/counterSlice';
+import baseApi from './baseApi';
 
 const reducers = combineReducers({
   [baseApi.reducerPath]: baseApi.reducer,
-  [counterSlice.name]: counterSlice.reducer,
-  [counterApiSlice.name]: counterApiSlice.reducer,
+  counter: counterReducer,
 });
 
 const store = configureStore({
